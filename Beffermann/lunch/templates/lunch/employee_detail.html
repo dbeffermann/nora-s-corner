@@ -1,0 +1,43 @@
+{%  extends 'lunch/main.html' %}
+
+{% block content %}
+
+        <br>
+        
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+                    
+                    <h5>{{object.name}}</h5>
+					<h6>Created at: {{object.date_created}}</h6>
+					<p><a href="{% url 'lunch:employee_update' object.id %}">Edit </a>
+					<a href="{% url 'lunch:employee_delete' object.id %}">Delete </a></p>
+					
+				</div>
+				<div class="card card-body">
+					<div class="table-responsive">
+						<table class="table table-hover table-sm">
+							<tr>
+								<th>Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+								<th>Workplace</th>
+								
+							</tr>
+								<tr>
+                                    <td>{{employee.name}}</td>
+                                    <td>{{employee.phone}}</td>
+                                    <td>{{employee.email}}</td>	
+                                    <td>{{employee.workplace}}</td>	
+                                </tr>
+                                
+						
+							
+						</table>
+				    </div>
+				</div>
+			</div>
+			
+		</div>
+
+{% endblock content %}

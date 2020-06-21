@@ -1,0 +1,42 @@
+
+{% load static %}
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+ <!--Navbar mobile-->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!--Navbar items-->
+  <div class="collapse navbar-collapse" id="navbarNav">
+
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'lunch:home' %}">Home</a> 
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'lunch:menus' %}">Menus</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'lunch:dishes' %}">Dishes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'lunch:employees' %}">Employees</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'lunch:orders' %}">Orders</a>
+      </li>
+
+    </ul>
+
+    <ul class="navbar-nav pull right">
+
+      <li class="nav-item">
+        <a class="nav-link " href="#">Slackapp</a>
+      </li>
+
+    </ul>
+
+  </div>
+
+</nav>

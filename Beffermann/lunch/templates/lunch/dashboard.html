@@ -1,0 +1,73 @@
+{%  extends 'lunch/main.html' %}
+
+{% block content %}
+
+{%  include 'lunch/status.html' %}
+<br>
+<div class="row">
+	<div class="col-md-5 text-center">
+		<h5>EMPLOYEES</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'lunch:employee_create' %}">Create Employee</a>
+			<div class="table-responsive">
+			<table class="table table-sm table-hover my-2">
+				<tr>
+					<th></th>
+					<th>Employee</th>
+					<th>Phone</th>
+					<th>Workplace</th>
+				</tr>
+
+				{% for employee in employees %}
+					<tr>
+						<td><a class="btn btn-sm btn-info" href="{% url 'lunch:employee' employee.id %}">View</a></td>
+						<td>{{employee.name}}</td>
+						<td>{{employee.phone}}</td>
+						<td>{{employee.workplace}}</td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+		</div>
+	</div>
+
+	<div class="col-md-7 text-center">
+		<h5>INCOMING ORDERS</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'lunch:order_create' %}">Create Order</a>
+			<div class="table-responsive">
+			<table class="table table-sm table-hover my-2">
+				<tr>
+					<th></th>
+					<th>Workplace</th>
+					<th>Employee</th>
+					<th>Dish</th>
+					<th>Status</th>
+					
+				</tr>
+
+				{% for order in orders %}
+					<tr>
+
+						<td><a class="btn btn-sm btn-info" href="{% url 'lunch:order' order.id %}">View</a></td>
+						<td>{{order.employee.workplace}}</td>
+						<td>{{order.employee}}</td>
+						<td>{{order.dish}}</td>
+						<td>{{order.status}}</td>
+						
+					</tr>
+
+				{% endfor %}
+
+			</table>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,33 @@
+{%  extends 'lunch/main.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+
+
+
+<div class="row">
+    
+	<div class="col-md-6">
+		<div class="card card-body">
+            <p>Are you sure you want to delete "{{object}}"?</p>
+            <a href="{% url 'lunch:menu' object.id %}">Go back</a>
+
+			<form action="" method="POST">
+				<div class="form-group">
+					{% csrf_token %}
+					{{form.as_p}}
+			    </div>
+				<input type="submit" name="Submit">
+			</form>
+			
+			{% if success %}
+			<div class="alert alert-success" role="alert">
+				{{success}}
+			  </div>
+			{% endif %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}

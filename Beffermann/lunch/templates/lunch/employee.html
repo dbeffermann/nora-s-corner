@@ -1,0 +1,44 @@
+{%  extends 'lunch/main.html' %}
+
+{% block content %}
+
+		<br>
+	
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>Emloyees</h5>
+					<h6><a href="{% url 'lunch:employee_create' %}">+ add employee</a></h6>
+				</div>
+				<div class="card card-body">
+					<div class="table-responsive">
+						<table class="table table-hover table-sm">
+							<tr>
+								
+								<th>Employee</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+								<th>Workplace</th>
+								
+							</tr>
+
+							{% for i in object_list %}
+								<tr>
+									
+									<td><a href="{% url 'lunch:employee' i.id %}">{{i.name}}</a></td>
+                                    <td><a href="{% url 'lunch:employee' i.id %}">{{i.phone}}</a></td>
+                                    <td><a href="{% url 'lunch:employee' i.id %}">{{i.email}}</a></td>
+                                    <td><a href="{% url 'lunch:employee' i.id %}">{{i.workplace}}</a></td>
+                                    
+									
+								</tr>
+							{% endfor %}
+							
+						</table>
+				    </div>
+				</div>
+			</div>
+			
+		</div>
+
+{% endblock content %}
