@@ -24,9 +24,17 @@
 
 							{% for i in context %}
 								<tr>
-		
+									{% if i.profile.email%}
+
 									<td><a class="btn btn-sm btn-info" href="{% url 'slackapp:user_by_email' i.profile.email %}">View</a></td>
-                                    <td>{{i.real_name}}</td>
+
+									{% else %} 
+
+									<td><a class="btn btn-sm btn-info" href="#">-</a></td>
+
+									{% endif %}
+
+                                    <td>{{i.name}}</td>
                                     <td>{{i.profile.email}}</td>
                                     
                                     		
@@ -39,5 +47,5 @@
 			</div>
 			
 		</div>
-{{context.name}}
+
 {% endblock %}

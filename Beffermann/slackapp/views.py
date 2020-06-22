@@ -13,7 +13,7 @@ BASE_URL = "https://slack.com/api/"
 
 """ 1.- Slack Web API Methods: Users. """
 
-def get_users(request=None):
+def get_users(request):
 
     payload = {
         'token': settings.SLACK_OAUTH_TOKEN,
@@ -21,16 +21,11 @@ def get_users(request=None):
         }
 
     response = requests.get(os.path.join(BASE_URL,'users.list/'),params=payload).json()
+    print(response)
+    obj_list = [i for i in response['members'] if 'email' in i['profile']]
 
-    obj_list = [i for i in response['members'] if not (i['name'].endswith('bot') or i['name'] == "nora")]
+    return render(request, 'users.html', {'context': obj_list})
 
-    if request is not None:
-    
-        return render(request, 'users.html', {'context': obj_list})
-
-    else:
-
-        return obj_list
 
 
 def user_by_email(request,email=None):
@@ -41,21 +36,16 @@ def user_by_email(request,email=None):
             }
 
         response = requests.get(os.path.join(BASE_URL, "users.lookupByEmail"), params = payload).json()
-
-        if response['ok'] == True:
-
-            return render(request, 'user_detail.html', {'context': response['user']})
-
-        else:
-
-            return redirect(reverse("slackapp:users"))
+            
+        return render(request, 'user_detail.html', {'context': response['user']})
+    else:
+   
+        return redirect(reverse("slackapp:users"))
 
 
 
 """ 2.- Slack Web API Methods: Reminders. """
 def get_reminders(request):
-
-    users = get_users()
 
     payload = {
 
@@ -65,12 +55,16 @@ def get_reminders(request):
 
     response = requests.get(os.path.join(BASE_URL, "reminders.list/"), params = payload).json()
     reminders = response['reminders']
+    users = requests.get(os.path.join(BASE_URL,'users.list/'),params=payload).json()
+    users = [i for i in users]
+    
+
     
     for i in reminders:
         i['time'] = datetime.fromtimestamp(int(i['time'])).strftime('%Y-%m-%d %H:%M:%S')
 
     for i in reminders:
-        i['user'] = [user_id for user_id in users if user_id in get_users()][0]
+        i['user'] = [user_id for user_id in users if user_id in users]
 
 
     return render(request, 'reminders.html', {'context': reminders})

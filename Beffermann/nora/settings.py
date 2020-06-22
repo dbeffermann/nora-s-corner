@@ -130,4 +130,6 @@ STATICFILES_DIRS = [
 ]
 
 # This Token is required when using the slack's Web API methods.
-SLACK_OAUTH_TOKEN = "xoxp-1168103986631-1182846451858-1189694128390-ea8f7532807a7fd0e5ea40ca4ac6f73e"
+SLACK_OAUTH_TOKEN = ""
+
+SLACK_APP_NAME = ""
