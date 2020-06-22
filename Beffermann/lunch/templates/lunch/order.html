@@ -15,6 +15,7 @@
 						<table class="table table-hover table-sm">
 							<tr>
 								
+								<th></th>
 								<th>Employee</th>
 								<th>Dish</th>
                                 <th>Status</th>
@@ -23,11 +24,13 @@
 							</tr>
 
 							{% for i in object_list %}
-								<tr>									
-									<td><a href="{% url 'lunch:order' i.id %}">{{i.employee}}</a></td>
-                                    <td><a href="{% url 'lunch:order' i.id %}">{{i.dish}}</a></td>
-                                    <td><a href="{% url 'lunch:order' i.id %}">{{i.status}}</a></td>
-                                    <td><a href="{% url 'lunch:order' i.id %}">{{i.date_created}}</a></td>
+								<tr>
+									
+									<td><a class="btn btn-sm btn-info" href="{% url 'lunch:order' i.id %}">View</a></td>
+									<td>{{i.employee}}</td>
+                                    <td>{{i.dish}}</td>
+                                    <td>{{i.status}}</td>
+                                    <td>{{i.date_created}}</td>
 
 								</tr>
 							{% endfor %}

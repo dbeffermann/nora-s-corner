@@ -14,7 +14,7 @@
 					<div class="table-responsive">
 						<table class="table table-hover table-sm">
 							<tr>
-								
+								<th></th>
 								<th>Employee</th>
                                 <th>Phone</th>
                                 <th>Email</th>
@@ -24,11 +24,11 @@
 
 							{% for i in object_list %}
 								<tr>
-									
-									<td><a href="{% url 'lunch:employee' i.id %}">{{i.name}}</a></td>
-                                    <td><a href="{% url 'lunch:employee' i.id %}">{{i.phone}}</a></td>
-                                    <td><a href="{% url 'lunch:employee' i.id %}">{{i.email}}</a></td>
-                                    <td><a href="{% url 'lunch:employee' i.id %}">{{i.workplace}}</a></td>
+									<td><a class="btn btn-sm btn-info" href="{% url 'lunch:employee' i.id %}">View</a></td>
+									<td>{{i.name}}</td>
+                                    <td>{{i.phone}}</td>
+                                    <td>{{i.email}}</td>
+                                    <td>{{i.workplace}}</td>
                                     
 									
 								</tr>

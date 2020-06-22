@@ -1,0 +1,43 @@
+{%  extends 'lunch/main.html' %}
+
+{% block content %}
+
+		<br>
+	
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>My Users from Slack</h5>
+					<!--h6><a href="{% url 'slackapp:reminder_create' %}">+ Send new reminder</a></h6-->
+				</div>
+				<div class="card card-body">
+					<div class="table-responsive">
+						<table class="table table-sm table-hover">
+                            
+                            <tr>
+								
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Latest Reminder</th>
+                                		
+							</tr>
+
+							{% for i in context %}
+								<tr>
+		
+									<td><a class="btn btn-sm btn-info" href="{% url 'slackapp:user_by_email' i.profile.email %}">View</a></td>
+                                    <td>{{i.real_name}}</td>
+                                    <td>{{i.profile.email}}</td>
+                                    
+                                    		
+								</tr>
+							{% endfor %}
+							
+						</table>
+				    </div>
+				</div>
+			</div>
+			
+		</div>
+{{context.name}}
+{% endblock %}

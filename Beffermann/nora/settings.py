@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'lunch.apps.LunchConfig',
+    'slackapp.apps.SlackappConfig'
     
    
 ]
@@ -108,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Santiago'
 
 USE_I18N = True
 
@@ -128,3 +129,5 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+# This Token is required when using the slack's Web API methods.
+SLACK_OAUTH_TOKEN = "xoxp-1168103986631-1182846451858-1189694128390-ea8f7532807a7fd0e5ea40ca4ac6f73e"

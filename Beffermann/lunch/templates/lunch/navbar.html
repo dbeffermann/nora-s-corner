@@ -2,7 +2,6 @@
 {% load static %}
 <!--Navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
- <!--Navbar mobile-->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -30,11 +29,15 @@
     </ul>
 
     <ul class="navbar-nav pull right">
-
       <li class="nav-item">
-        <a class="nav-link " href="#">Slackapp</a>
+        <h6 class="nav-link">Slack</h6>
       </li>
-
+      <li class="nav-item">
+        <a class="nav-link " href="{% url 'slackapp:reminders' %}">Reminders</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="{% url 'slackapp:users' %}">Users</a>
+      </li>
     </ul>
 
   </div>

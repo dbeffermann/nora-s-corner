@@ -29,15 +29,5 @@ urlpatterns = [
     path('order/<int:id>/', views.OrderDetailView.as_view(), name='order'),
     path('order/<int:id>/update/', views.OrderUpdateView.as_view(), name='order_update'),
     path('order/<int:id>/delete/', views.OrderDeleteView.as_view(), name='order_delete'),
-    
-
-    
-    #path('menu/<int:id>/delete/', views.MenuDetailView.as_view(), name='menu_delete'),
-
-    #path('customer/<str:pk_test>/', views.customer, name="customer"),
-    #path('create_order/', views.createOrder, name="create_order"),
-    #path('update_order/<str:pk>/', views.updateOrder, name="update_order"),
-    #path('delete_order/<str:pk>/', views.deleteOrder, name="delete_order"),
-
 
 ]

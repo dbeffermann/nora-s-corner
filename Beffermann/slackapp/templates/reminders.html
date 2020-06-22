@@ -1,0 +1,50 @@
+{%  extends 'lunch/main.html' %}
+
+{% block content %}
+
+		<br>
+	
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>My Reminders from Slack</h5>
+					<h6><a href="{% url 'slackapp:reminder_create' %}">+ Send new reminder</a></h6>
+				</div>
+				<div class="card card-body">
+					<div class="table-responsive">
+						<table class="table table-sm table-hover">
+                            
+                            <tr>
+                                
+                                <td></td>
+                                <th>Triggers on </th>
+                                <th>User</th>
+                                <th>Email</th>
+                                <th>Recurring</th>
+                                <th>Text</th>
+                                
+                                
+								
+							</tr>
+
+							{% for i in context %}
+								<tr>
+
+									<td><a class="btn btn-sm btn-danger"href="{% url 'slackapp:reminder_delete' i.id %}">Delete</a></td>
+                                    <td>{{i.time}}</td>
+                                    <td>{{i.user.real_name}}</td>
+                                    <td>{{i.user.profile.email}}</td>
+                                    <td>{{i.recurring}}</td>
+                                    <td>{{i.text}}</td>
+                                        
+								</tr>
+							{% endfor %}
+							
+						</table>
+				    </div>
+				</div>
+			</div>
+			
+		</div>
+
+{% endblock %}

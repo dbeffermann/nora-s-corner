@@ -1,0 +1,44 @@
+{%  extends 'lunch/main.html' %}
+
+{% block content %}
+
+		<br>
+	
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>{{context.name}}</h5>
+					<h6>slack user_id: {{context.id}}</h6>
+					<h6><a href="{% url 'slackapp:users' %}">Back to users</a></h6>
+				</div>
+				<div class="card card-body">
+					<div class="table-responsive">
+						<table class="table table-sm table-hover">
+                            
+                            <tr>
+								<th></th>
+								<th>Id</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Time Zone</th>
+                                
+							</tr>
+
+							<tr>
+								<td><a class="btn btn-sm btn-info"href="{% url 'slackapp:reminder_create' %}">Send reminder</a></td>
+								<td>{{context.id}}</td>
+                                <td>{{context.real_name}}</td>
+                                <td>{{context.profile.email}}</td>
+                                <td>{{context.tz_label}}</td>
+                                <td></td>
+                                    		
+							</tr>
+							
+						</table>
+				    </div>
+				</div>
+			</div>
+			
+		</div>
+
+{% endblock %}
